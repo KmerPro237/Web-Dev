@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Vorlesungsplan>
+    <Wochentag>Montag
+        <Stunde>2.</Stunde>
+        <Zeit>10:00 - 11:30</Zeit>
+        <Fach>Seminar Angewandte Informatik</Fach>
+        <Fachart>Vorlesung</Fachart>
+        <Raum>7108</Raum>
+        <Dozent_in>Prof. Dr. Ing. Andre Miede</Dozent_in>
+
+        <Stunde>3.</Stunde>
+        <Zeit>11:45 - 13:15</Zeit>
+        <Fach>Entscheidungen unter Risiko und statistische Datenanalyse</Fach>
+        <Fachart>Vorlesung</Fachart>
+        <Raum>5306</Raum>
+        <Dozent_in>Kaspar, Melanie</Dozent_in>
+
+        <Stunde>4.</Stunde>
+        <Zeit>14:15 - 15:45</Zeit>
+        <Fach>Entscheidungen unter Risiko und statistische Datenanalyse</Fach>
+        <Fachart>Vorlesung</Fachart>
+        <Raum>5306</Raum>
+        <Dozent_in>Kaspar, Melanie</Dozent_in>
+
+    </Wochentag>
+
+    <Wochentag>Dienstag
+        <Stunde>1.</Stunde>
+        <Zeit>08:15 - 09:45</Zeit>
+        <Fach>Mikroprozessortechnik (Schäfer, Jürgen)</Fach>
+        <Fachart>Vorlesung</Fachart>
+        <Raum>4301</Raum>
+        <Dozent_in>Schäfer, Jürgen</Dozent_in>
+
+        <Stunde>2.</Stunde>
+        <Zeit>10:00 - 11:30</Zeit>
+        <Fach>Mikroprozessortechnik (Schäfer, Jürgen)</Fach>
+        <Fachart>Vorlesung</Fachart>
+        <Raum>4301</Raum>
+        <Dozent_in>Schäfer, Jürgen</Dozent_in>
+
+        <Stunde>3.</Stunde>
+        <Zeit>11:45 - 13:15</Zeit>
+        <Fach>Grundlagen der Webentwicklung</Fach>
+        <Fachart>Vorlesung</Fachart>
+        <Raum>8207</Raum>
+        <Dozent_in>Kretschmer, Thomas</Dozent_in>
+
+        <Stunde>4.</Stunde>
+        <Zeit>14:15 - 15:45</Zeit>
+        <Fach>Grundlagen der Webentwicklung</Fach>
+        <Fachart>Vorlesung</Fachart>
+        <Raum>8207</Raum>
+        <Dozent_in>Kretschmer, Thomas</Dozent_in>
+
+        <Stunde>5.</Stunde>
+        <Zeit>16:00 - 17:30</Zeit>
+        <Fach>Einführung in die Astronomie</Fach>
+        <Fachart>Vorlesung</Fachart>
+        <Raum>9011</Raum>
+        <Dozent_in>Löffler-Mang, Martin</Dozent_in>
+    </Wochentag>
+    
+</Vorlesungsplan>

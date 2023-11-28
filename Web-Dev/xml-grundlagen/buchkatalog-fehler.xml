@@ -1,0 +1,42 @@
+<?xml version="1.2"?>
+<catalog>
+
+	<!--- Dieses Buch ist zweimal vorhanden -->
+	<buch signatur="55.3 Har 1.Ex" signatur="55.3 Har 2.Ex">
+		<autor>
+			<vorname>Elliotte Rusty</vorname>
+			<nachname>Harold</nachname>
+		</autor>
+		<autor>
+			<vorname>W. Scott</vorname>
+			<nachname>Means</nachname>
+		</autor>
+		<titel>XML in a Nutshell</titel>
+		<verlag>O'Reilly</verlag>
+		<Datum_der_Aufnahme>20.01.2003</Datum_der_Aufnahme>
+		<bemerkung>Kurz &amp; knapp, aber gut</bemerkung>
+	</buch>
+
+	<buch bezeichnung="ein älteres Buch" signatur="55.2 Egg">
+		<autor>
+			<vorname>Bernd</vorname>
+			<nachname>Eggink</nachname>
+		</autor>
+		<titel>Kornshell-Programmierung</titel>
+		<untertitel>Eine systematische Einführung</untertitel>
+		<verlag>Hanser</verlag>
+		<Datum_der_Aufnahme>4.7.1995</Datum_der_Aufnahme>
+	</buch>
+</catalog>
+
+</catalog2>
+	<buch signatur=51.0 Schoe>
+		<autor>
+			<vorname>Uwe</vorname>
+			<nachname>Schöning</nachname>
+		</autor>
+		<titel>Theoretische Informatik - kurzgefasst</titel>
+		<verlag>Spektrum</verlag>
+		<Datum_der_Aufnahme>10.8.2002</Datum_der_Aufnahme>
+	</buch>
+</catalog2>
