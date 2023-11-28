@@ -1,0 +1,30 @@
+img.Profile {
+    max-width: 5%;;
+}
+img.Ndjoka {
+    max-width: 25%;
+    border-radius: 25%;
+}
+img.Oseille {
+    max-width: 25%;
+    max-height: 50%;
+    border-radius: 10%;
+}
+h2.PHeading {
+    color: #000000;
+    display: inline-block;
+
+}
+aside {
+    float: right;
+    width: 30%;
+    margin: 1%;
+    padding: 1%;
+    background-color: #dad0d0;
+}
+a:hover {
+    color: #25ac2c;
+}
+a:visited {
+    color: #ac9625;
+}
