@@ -20,6 +20,7 @@ aside {
     width: 30%;
     margin: 1%;
     padding: 1%;
+    border: 15px solid #8a8484;
     background-color: #dad0d0;
 }
 a:hover {
@@ -27,4 +28,17 @@ a:hover {
 }
 a:visited {
     color: #ac9625;
+}
+
+.box {
+    float: center;
+    width: 30%;
+    margin: 1%;
+    padding: 1%;
+    border: 15px solid #b78a30;
+    background-color: #dad186;
+}
+
+body {
+    background-color: #ebe0bc;
 }
