@@ -1,0 +1,11 @@
+#countLabel {
+    font-size: 75px;
+    display: block;
+    text-align: center;
+}
+
+#calcButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
