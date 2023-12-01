@@ -34,6 +34,35 @@ function testVar() {
     console.log("Value of var within block: ----> " +y); // ReferenceError: y is not defined (let is block-scoped)
   }
 
-  console.log(testLet());
+  //console.log(testLet());
   console.log(testVar());
+
+// type conversion = change the datatype of a value to another
+//                                 (strings, numbers, booleans)
+
+let userAge = window.prompt("How old are you?");
+
+console.log(typeof userAge);
+userAge = Number(userAge);
+console.log(typeof userAge);
+userAge += 1;
+
+console.log("Happy Birthday! You are now", userAge, "years old");
+
+/* chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+      // Process the message
+      console.log(request);
   
+      // Send a response if needed
+      sendResponse({ result: "Message received" });
+    }
+  );
+  
+  // Content script or popup script
+  chrome.runtime.sendMessage({ data: "Hello from content script" }, function(response) {
+    // Handle the response
+    console.log(response);
+  });
+ */
+
