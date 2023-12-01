@@ -20,3 +20,12 @@ console.log(s);
 s = s**2;
 console.log(s);
 console.log(Math.abs(-5));
+
+q = Math.max(1, 2, 3, 4, 5, 6, 7, 8, 9);
+console.log(q);
+
+q = Math.min(1, 2, 3, 4, 5, 6, 7, 8, 9);
+console.log(q);
+
+d = Math.fround(3.65);
+console.log(d);
