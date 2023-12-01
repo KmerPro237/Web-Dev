@@ -29,3 +29,30 @@ console.log(q);
 
 d = Math.fround(3.65);
 console.log(d);
+
+// Find hypothenuse of a triangle
+
+let a, b, c;
+
+a = window.prompt("Enter the length of side a: ");
+a = Number(a);
+
+b = window.prompt("Enter the length of side a: ");
+b = Number(b);
+
+c = Math.sqrt(a**2 + b**2);
+console.log("The length of the hypothenuse is: ", c);
+
+document.getElementById("calcBtn").onclick = function() { 
+    let a, b, c;
+
+    a = document.getElementById("ATextBox").value;
+    a = Number(a);
+
+    b = document.getElementById("BTextBox").value;
+    b = Number(b);
+
+    c = Math.sqrt(a**2 + b**2);
+    //console.log("The length of the hypothenuse is: ", c);
+    document.getElementById("lblC").innerHTML = "The length of the hypothenuse is: " + c;
+}
