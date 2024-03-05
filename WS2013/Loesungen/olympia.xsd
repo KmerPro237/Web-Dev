@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+  <xs:element name="olympia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="teilnehmer" />
+        <xs:element ref="wettkämpfe" />
+      </xs:sequence>
+    </xs:complexType>
+    
+    <xs:key name="sid">
+      <xs:selector xpath="teilnehmer/sportler"/>
+      <xs:field xpath="@sid"/>
+    </xs:key>
+    <xs:keyref name="refsid" refer="sid">
+      <xs:selector xpath="wettkämpfe/wettkampf/ergebnis"/>
+      <xs:field xpath="@sid"/>
+    </xs:keyref>
+    
+  </xs:element>
+  
+  <xs:simpleType name="tGeschlecht">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="m" />
+      <xs:enumeration value="w" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- oder
+  <xs:simpleType name="tGeschlecht">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(m|w)" />
+    </xs:restriction>
+  </xs:simpleType> 
+  -->
+  
+  <xs:simpleType name="tZeit">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[1-5]?\d:[0-5]\d.\d\d?"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tJahre">
+    <xs:list itemType="xs:gYear"></xs:list>
+  </xs:simpleType>
+  <xs:element name="olympiateilnahmen" type="tJahre" />
+
+    <xs:element name="wettkampf">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="3" maxOccurs="unbounded" ref="ergebnis" />
+      </xs:sequence>
+      <xs:attribute name="sportart" type="xs:string" use="required" />
+      <xs:attribute name="datum" type="xs:date" use="required" />
+      <xs:attribute name="geschlecht" type="tGeschlecht" use="required"/>      
+    </xs:complexType>
+  </xs:element>
+ 
+  <xs:element name="teilnehmer">
+    <xs:complexType>
+      <xs:sequence minOccurs="1" maxOccurs="unbounded">
+        <xs:element ref="sportler" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="sportler">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="name" type="xs:string" />
+        <xs:element name="vorname" type="xs:string" />
+        <xs:element minOccurs="0" ref="olympiateilnahmen" />
+      </xs:sequence>
+      <xs:attribute name="sid" type="xs:string" use="required" />
+      <xs:attribute name="geschlecht" use="required" type="tGeschlecht"/>
+      <xs:attribute name="land" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+    
+  <xs:element name="wettkämpfe">
+    <xs:complexType>
+      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="wettkampf" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+ 
+  <xs:element name="ergebnis">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="zeit" />
+        <xs:element ref="punkte" />
+      </xs:choice>
+      <xs:attribute name="sid" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="zeit" type="tZeit" />
+  <xs:element name="punkte" type="xs:decimal" />
+</xs:schema>

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE olympia [
+  <!ELEMENT olympia (teilnehmer, wettkämpfe)>
+  <!ELEMENT teilnehmer (sportler)+>
+  <!ELEMENT sportler (name, vorname , olympiateilnahmen?)>
+  <!ATTLIST sportler
+    sid ID #REQUIRED
+    geschlecht (m|w) #REQUIRED
+    land CDATA #REQUIRED
+  >
+  <!ELEMENT geburtsdatum (#PCDATA)>
+  <!ELEMENT olympiateilnahmen (#PCDATA)>
+  <!ELEMENT name (#PCDATA)>
+  <!ELEMENT vorname (#PCDATA)>
+  <!ELEMENT wettkämpfe (wettkampf)*>
+  <!ELEMENT wettkampf (ergebnis,ergebnis,ergebnis+)>
+  <!ATTLIST wettkampf
+    sportart CDATA #REQUIRED
+    datum NMTOKEN #REQUIRED
+    geschlecht (m|w) #REQUIRED
+  >
+  <!ELEMENT ergebnis (zeit|punkte)>
+  <!ATTLIST ergebnis
+    sid IDREF #REQUIRED
+  >
+  <!ELEMENT zeit (#PCDATA)>
+  <!ELEMENT punkte (#PCDATA)>
+]>
+<olympia>
+  <teilnehmer>
+    <sportler sid="s01" geschlecht="w" land="Deutschland">
+      <name>Höfl-Riesch</name>
+      <vorname>Maria</vorname>
+      <olympiateilnahmen>2010</olympiateilnahmen>
+    </sportler>
+    <sportler sid="s02" geschlecht="w" land="Österreich">
+      <name>Hosp</name>
+      <vorname>Nicole</vorname>
+    </sportler>
+    <sportler sid="s03" geschlecht="w" land="USA">
+      <name>Mancuso</name>
+      <vorname>Julia</vorname>
+      <olympiateilnahmen>2010</olympiateilnahmen>
+    </sportler>
+    <sportler sid="s04" geschlecht="w" land="Slowenien">
+      <name>Maze</name>
+      <vorname>Tina</vorname>
+      <olympiateilnahmen>2002 2006 2010</olympiateilnahmen>
+    </sportler>
+    <sportler sid="s05" geschlecht="m" land="Australien">
+      <name>Kerry</name>
+      <vorname>Brendan</vorname>
+      <olympiateilnahmen>2010</olympiateilnahmen>
+    </sportler>
+    <sportler sid="s06" geschlecht="m" land="Deutschland">
+      <name>Liebers</name>
+      <vorname>Peter</vorname>
+      <olympiateilnahmen>2006</olympiateilnahmen>
+    </sportler>
+    <sportler sid="s24" geschlecht="m" land="Österreich">
+      <name>Pfeifer</name>
+      <vorname>Viktor</vorname>
+      <olympiateilnahmen>2002 2010</olympiateilnahmen>
+    </sportler>
+    <sportler sid="s12" geschlecht="m" land="USA">
+      <name>Brown</name>
+      <vorname>Jason</vorname>
+    </sportler>
+    <sportler sid="s07" geschlecht="w" land="Schweiz">
+      <name>Gisin</name>
+      <vorname>Dominique</vorname>
+    </sportler>
+  </teilnehmer>
+  
+  <wettkämpfe>
+       
+    <wettkampf sportart="Ski alpin / Abfahrt" datum="2014-02-12" geschlecht="w">
+      <ergebnis sid="s01">
+        <zeit>2:10.34</zeit>
+      </ergebnis>
+      <ergebnis sid="s04">
+        <zeit>2:10.95</zeit>
+      </ergebnis>
+      <ergebnis sid="s03">
+        <zeit>2:11.03</zeit>
+      </ergebnis>
+    </wettkampf>
+    
+    <wettkampf sportart="Eiskunstlauf / Einzel" datum="2014-02-10" geschlecht="m">
+      <ergebnis sid="s24">
+        <punkte>75</punkte>
+      </ergebnis>
+      <ergebnis sid="s05">
+        <punkte>65</punkte>
+      </ergebnis>
+      <ergebnis sid="s12">
+        <punkte>60</punkte>
+      </ergebnis>
+      <ergebnis sid="s06">
+        <punkte>52</punkte>
+      </ergebnis>
+    </wettkampf>
+
+    <wettkampf sportart="Ski alpin / Super Kombination" datum="2014-02-10" geschlecht="w">
+      <ergebnis sid="s01">
+        <zeit>2:34.62</zeit>
+      </ergebnis>
+      <ergebnis sid="s02">
+        <zeit>2:35.02</zeit>
+      </ergebnis>
+      <ergebnis sid="s03">
+        <zeit>2:35.15</zeit>
+      </ergebnis>
+      <ergebnis sid="s04">
+        <zeit>2:35.25</zeit>
+      </ergebnis>
+      <ergebnis sid="s07">
+        <zeit>2:36.12</zeit>
+      </ergebnis>
+    </wettkampf>
+
+  </wettkämpfe>
+</olympia>

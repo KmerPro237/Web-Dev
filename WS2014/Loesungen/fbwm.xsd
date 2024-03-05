@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="fbwm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="mannschaften" />
+        <xs:element ref="spiele" />
+      </xs:sequence>
+    </xs:complexType>
+
+    <xs:key name="spieleId">
+      <xs:selector xpath="spiele/spiel"/>
+      <xs:field xpath="@id"/>
+    </xs:key>
+    <xs:keyref name="refSpieleId" refer="spieleId">
+      <xs:selector xpath="mannschaften/land/spieler/spieleinsatz"/>
+      <xs:field xpath="@sid"/>
+    </xs:keyref>
+
+    <!--
+    <xs:key name="land">
+      <xs:selector xpath="mannschaften/land"/>
+      <xs:field xpath="@name"/>
+    </xs:key>
+    <xs:keyref name="refLand1" refer="land">
+      <xs:selector xpath="spiele/spiel"/>
+      <xs:field xpath="@mannschaft1"/>
+    </xs:keyref>
+    <xs:keyref name="refLand2" refer="land">
+      <xs:selector xpath="spiele/spiel"/>
+      <xs:field xpath="@mannschaft2"/>
+    </xs:keyref>
+    -->
+    
+  </xs:element>
+
+  <xs:simpleType name="tElfmeter">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ja" />
+      <xs:enumeration value="nein" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tEinheit">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="m" />
+      <xs:enumeration value="km" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- oder
+  <xs:simpleType name="tElfmeter">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(ja|nein)" />
+    </xs:restriction>
+  </xs:simpleType> 
+  -->
+
+  <xs:simpleType name="tMinute">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="120"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:element name="tor">
+    <xs:complexType>
+      <xs:attribute name="minute" type="tMinute" use="required" />
+      <xs:attribute default="nein" name="elfmeter" type="tElfmeter"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="land">
+    <xs:complexType>
+      <!-- auskommentiert, da das Beispieldokument nicht passt.
+      <xs:sequence minOccurs="23" maxOccurs="23"> -->
+      <xs:sequence minOccurs="1" maxOccurs="unbounded">
+        <xs:element ref="spieler" />
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="mannschaften">
+    <xs:complexType>
+      <xs:sequence minOccurs="2" maxOccurs="unbounded">
+        <xs:element ref="land" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+    
+  <xs:element name="spieler">
+    <xs:complexType>
+      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="spieleinsatz" />
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="required" />
+      <xs:attribute name="vorname" type="xs:string" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="spieleinsatz">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="laufleistung" />
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="tor" />
+      </xs:sequence>
+      <xs:attribute name="sid" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="laufleistung">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute default="m" name="einheit" type="tEinheit"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+   
+  <xs:element name="spiele">
+    <xs:complexType>
+      <xs:sequence minOccurs="1" maxOccurs="unbounded">
+        <xs:element ref="spiel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="spiel">
+    <xs:complexType>
+      <xs:attribute name="id" type="xs:string" use="required" />
+      <xs:attribute name="mannschaft1" type="xs:string" use="required" />
+      <xs:attribute name="mannschaft2" type="xs:string" use="required" />
+      <xs:attribute name="datum" type="xs:date" use="required"/>
+    </xs:complexType>
+  </xs:element>
+   
+</xs:schema>

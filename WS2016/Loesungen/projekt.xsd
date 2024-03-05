@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- a) -->
+  <xs:simpleType name="tStart">
+    <xs:restriction base="xs:dateTime">
+      <xs:pattern value=".*T(0[8-9]|1[0-7]).*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- b) -->
+  <xs:simpleType name="tTopId">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="t\d+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- c) -->
+  <xs:element name="top">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="entscheidung" />
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="aufgabe" />
+      </xs:sequence>
+      <xs:attribute name="id" type="tTopId" use="required" />
+      <xs:attribute name="refTop" type="tTopId" />
+      <xs:attribute name="thema" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+
+  <!-- d) -->
+  <xs:simpleType name="tInitialen">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\p{Lu}{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tTeilnehmer">
+    <xs:list itemType="tInitialen"/>
+  </xs:simpleType>
+
+  <xs:element name="teilnehmer" type="tTeilnehmer" />
+
+  <!-- Der Rest ist in der Aufgabe 4 nicht erforderlich. -->
+
+  <xs:simpleType name="tDauer">
+    <xs:restriction base="xs:duration">
+      <xs:pattern value="PT([0-2]H)?[0-5]\dM"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tAufgabeId">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="a\d+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="projekt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="besprechung" />
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="required" />
+    </xs:complexType>
+
+    <xs:key name="keyAufgabe">
+      <xs:selector xpath="besprechung/top/aufgabe"/>
+      <xs:field xpath="@id"/>
+    </xs:key>
+
+    <xs:keyref name="keyrefAufgabe" refer="keyAufgabe">
+      <xs:selector xpath="besprechung/top/entscheidung"/>
+      <xs:field xpath="@refAufgabe"/>
+    </xs:keyref>
+
+    <xs:key name="keyTop">
+      <xs:selector xpath="besprechung/top"/>
+      <xs:field xpath="@id"/>
+    </xs:key>
+
+    <xs:keyref name="keyrefTop" refer="keyTop">
+      <xs:selector xpath="besprechung/top"/>
+      <xs:field xpath="@refTop"/>
+    </xs:keyref>
+  </xs:element>
+
+  <xs:element name="besprechung">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="teilnehmer" />
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="top" />
+      </xs:sequence>
+      <xs:attribute name="start" type="tStart" use="required" />
+      <xs:attribute name="dauer" type="tDauer" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="entscheidung">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="refAufgabe" type="tAufgabeId" />
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="aufgabe">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="id" type="tAufgabeId" use="required" />
+          <xs:attribute name="zugeteilt" type="tInitialen" use="required" />
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

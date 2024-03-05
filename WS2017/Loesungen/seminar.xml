@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<seminar name="Theoretische Informatik">
+  <themen>
+    <thema nr="t1">Reguläre Ausdrücke</thema>
+    <thema nr="t2">Treaps</thema>
+    <thema nr="t3">Skiplisten</thema>
+    <thema nr="t4">Die Greibach-Normalform</thema>
+    <thema nr="t5">Berechenbarkeit</thema>
+    <thema nr="t6">Das Lambda-Kalkül von Church</thema>
+    <thema nr="t7">Alternative Berechnungsmodelle</thema>
+    <thema nr="t8">Der Rekursionssatz</thema>
+    <thema nr="t9">Schaltkreiskomplexität</thema>
+    <thema nr="t10">Probabilistische Algorithmen</thema>
+  </themen>
+  <teilnehmer>
+    <stud matrikel="m1234567" email="sg@htwsaar.de">
+      <vorname>Sheila</vorname>
+      <nachname>Greibach</nachname>
+      <wunsch prio="1" thema="t1"/>
+      <wunsch prio="2" thema="t4"/>
+      <wunsch prio="3" thema="t2"/>
+    </stud>
+    <stud matrikel="m2345678" email="ac@htwsaar.de">
+      <vorname>Alonzo</vorname>
+      <nachname>Church</nachname>
+      <wunsch prio="1" thema="t4"/>
+      <wunsch prio="2" thema="t1"/>
+      <wunsch prio="3" thema="t6"/>
+    </stud>
+    <stud matrikel="m3456789" email="sk@htwsaar.de">
+      <vorname>Stephen</vorname>
+      <nachname>Kleene</nachname>
+      <wunsch prio="1" thema="t1"/>
+    </stud>
+    <stud matrikel="m4567890" email="rm@htwsaar.de">
+      <vorname>Rajeev</vorname>
+      <nachname>Motwani</nachname>
+      <wunsch prio="1" thema="t3"/>
+      <wunsch prio="2" thema="t2"/>
+    </stud>
+    <stud matrikel="m5678901" email="at@htwsaar.de">
+      <vorname>Alan</vorname>
+      <nachname>Turing</nachname>
+      <wunsch prio="1" thema="t5"/>
+      <wunsch prio="2" thema="t7"/>
+      <wunsch prio="3" thema="t10"/>
+    </stud>
+  </teilnehmer>
+  <vortragsplan>
+    <vortrag matrikel="m3456789" thema="t1" datum="2017-07-04" uhrzeit="13:45:00"/>
+    <vortrag matrikel="m2345678" thema="t6" datum="2017-07-11" uhrzeit="13:45:00"/>
+    <vortrag matrikel="m1234567" thema="t4" datum="2017-07-11" uhrzeit="15:00:00"/>
+    <vortrag matrikel="m4567890" thema="t3" datum="2017-07-18" uhrzeit="13:45:00"/>
+    <vortrag matrikel="m5678901" thema="t5"/>
+  </vortragsplan>
+</seminar>

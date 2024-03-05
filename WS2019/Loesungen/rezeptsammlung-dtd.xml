@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE rezepte [
+  <!ELEMENT rezepte (rezept)+>
+  <!-- Beginn der Lösung von Aufgabe 2 -->
+  <!ELEMENT rezept (name, zubereitung, zutat+)>
+  <!ATTLIST rezept
+    rid ID #REQUIRED
+    schwierigkeit (1|2|3) "1"
+  >
+  <!-- Ende der Lösung von Aufgabe 2 -->
+  <!ELEMENT name (#PCDATA)>
+  <!ELEMENT zutat (#PCDATA)>
+  <!ATTLIST zutat
+    menge NMTOKEN #REQUIRED
+    einheit (Stück|Gramm|Liter|ml) #REQUIRED
+  >
+  <!ELEMENT zubereitung (#PCDATA)>
+]>
+
+<rezepte>
+  <rezept rid="r5" schwierigkeit="2">
+    <name>Zitronenlimonade</name>
+    <zubereitung>Die Zitrone auspressen und den Saft mit dem Zucker und dem Wasser mischen.</zubereitung>
+    <zutat menge="1" einheit="Stück">Zitrone</zutat>
+    <zutat menge="100" einheit="Gramm">Zucker</zutat>
+    <zutat menge="1" einheit="Liter">Wasser</zutat>
+  </rezept>
+  <rezept rid="r444">
+    <name>Salzkartoffeln</name>
+    <zubereitung>Die Kartoffeln schälen und in reichlich Salzwasser garkochen.</zubereitung>
+    <zutat menge="500" einheit="Gramm">Kartoffeln</zutat>
+    <zutat menge="5" einheit="Gramm">Salz</zutat>
+  </rezept>
+</rezepte>

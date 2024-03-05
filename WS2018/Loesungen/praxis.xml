@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<praxis name="Praxis für Logopädie">
+  <leistungen>
+    <leistung lkz="l00" name="Erstbefund">
+      <preis kk="DAK">33.00</preis>
+      <preis kk="AOK">36.50</preis>
+      <preis kk="Privat">40.85</preis>
+    </leistung>
+    <leistung lkz="l45" name="45 Minuten Einzeltherapie">
+      <preis kk="DAK">46.80</preis>
+      <preis kk="AOK">48.00</preis>
+      <preis kk="Privat">51.00</preis>
+    </leistung>
+    <leistung lkz="g45" name="45 Minuten Gruppentherapie">
+      <preis kk="DAK">25.40</preis>
+      <preis kk="AOK">26.50</preis>
+      <preis kk="Privat">30.40</preis>
+    </leistung>
+    <leistung lkz="l30" name="30 Minuten Einzeltherapie">
+      <preis kk="DAK">31.40</preis>
+      <preis kk="AOK">33.00</preis>
+      <preis kk="Privat">35.00</preis>
+    </leistung>
+  </leistungen>
+  <patienten>
+    <patient kvnr="K123456789" geboren="1938-01-10">
+      <nachname>Knuth</nachname>
+      <vorname>Donald</vorname>
+      <kasse>DAK</kasse>
+      <behandlung art="l45" datum="2019-02-13"/>
+      <behandlung art="l45" datum="2019-02-20"/>
+    </patient>
+    <patient kvnr="P234567890" geboren="1944-04-12">
+      <nachname>Pratt</nachname>
+      <vorname>Vaughan</vorname>
+      <kasse>AOK</kasse>
+      <behandlung art="l00" datum="2019-02-12"/>
+      <behandlung art="l45" datum="2019-02-12"/>
+      <behandlung art="l45" datum="2019-02-19" abgesagt="ja"/>
+    </patient>
+    <patient kvnr="M345678901" geboren="2011-05-05">
+      <nachname>Morris</nachname>
+      <vorname>James</vorname>
+      <kasse>Privat</kasse>
+      <behandlung art="l30" datum="2019-01-25"/>
+      <behandlung art="l30" datum="2019-02-01"/>
+      <behandlung art="l30" datum="2019-02-08"/>
+    </patient>
+  </patienten>
+</praxis>

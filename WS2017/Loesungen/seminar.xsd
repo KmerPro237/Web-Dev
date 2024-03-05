@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="seminar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="themen" />
+        <xs:element ref="teilnehmer" />
+        <xs:element ref="vortragsplan" />
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="required" />
+    </xs:complexType>
+
+    <xs:key name="keyMatrikel">
+      <xs:selector xpath="teilnehmer/stud"/>
+      <xs:field xpath="@matrikel"/>
+    </xs:key>
+
+    <xs:keyref name="keyrefVortragMatrikel" refer="keyMatrikel">
+      <xs:selector xpath ="vortragsplan/vortrag"/>
+      <xs:field xpath="@matrikel"/>
+    </xs:keyref>
+
+    <xs:key name="keyThemaNr">
+      <xs:selector xpath="themen/thema"/>
+      <xs:field xpath="@nr"/>
+    </xs:key>
+
+    <xs:keyref name="keyrefVortragThemaNr" refer="keyThemaNr">
+      <xs:selector xpath ="vortragsplan/vortrag"/>
+      <xs:field xpath="@thema"/>
+    </xs:keyref>
+  </xs:element>
+  
+  <xs:element name="themen">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="thema" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="thema">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="nr" type="tNr" use="required" />
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="teilnehmer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="stud" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name="tNr">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="t\d+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tPrio">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <!-- oder
+  <xs:simpleType name="tPrio">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:enumeration value="1" />
+      <xs:enumeration value="2" />
+      <xs:enumeration value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  -->
+  
+  <xs:element name="wunsch">
+    <xs:complexType>
+      <xs:attribute name="prio" type ="tPrio" use="required"/>
+      <xs:attribute name="thema" type="tNr" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Beginn Aufgabe 4 -->
+  <!-- a) -->
+  <xs:simpleType name="tMatrikel">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="m\d{7}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+   <!-- b) -->
+  <xs:simpleType name="tEmail">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\p{Ll}{2}@htwsaar\.de"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- c) -->
+  <xs:element name="stud">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="vorname" type="xs:string" />
+        <xs:element name="nachname" type="xs:string" />
+        <xs:element ref="wunsch" minOccurs="1" maxOccurs="3"/>
+      </xs:sequence>
+      <xs:attribute name="matrikel" type="tMatrikel" use="required" />
+      <xs:attribute name="email" type="tEmail" use="required" />
+    </xs:complexType>
+  
+    <!-- d) -->
+    <xs:key name="keyPrio">
+      <xs:selector xpath="wunsch"/>
+      <xs:field xpath="@prio"/>
+    </xs:key>
+  </xs:element>
+  
+  <!-- Ende Aufgabe 4 -->
+    
+  <xs:element name="vortragsplan">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="vortrag"  minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="vortrag">
+    <xs:complexType>
+      <xs:attribute name="matrikel" type="tMatrikel" use="required" />
+      <xs:attribute name="thema" type="tNr" use="required" />
+      <xs:attribute name="datum" type="xs:date" />
+      <xs:attribute name="uhrzeit" type="xs:time" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

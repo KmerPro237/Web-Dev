@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<fbwm>
+  <mannschaften>
+    <land name="Deutschland">
+      <spieler name="Müller" vorname="Thomas">
+        <spieleinsatz sid="dp">
+          <laufleistung einheit="m">10615</laufleistung>
+          <tor minute="12" elfmeter="ja"/>
+          <tor minute="45"/>
+          <tor minute="78"/>
+        </spieleinsatz>
+        <spieleinsatz sid="ud">
+          <laufleistung einheit="m">11062</laufleistung>
+          <tor minute="55"/>
+        </spieleinsatz>
+      </spieler>
+      <spieler name="Hummels" vorname="Mats">
+        <spieleinsatz sid="dp">
+          <laufleistung einheit="m">7715</laufleistung>
+          <tor minute="32"/>
+        </spieleinsatz>
+        <spieleinsatz sid="fd">
+          <laufleistung einheit="m">9582</laufleistung>
+          <tor minute="13"/>
+        </spieleinsatz>
+      </spieler>
+    </land>
+    <land name="Portugal">
+      <spieler name="Ronaldo">
+        <spieleinsatz sid="dp">
+          <laufleistung einheit="km">9.134</laufleistung>
+        </spieleinsatz>
+      </spieler>
+      <spieler name="Varela">
+        <spieleinsatz sid="up">
+          <laufleistung einheit="km">2.858</laufleistung>
+          <tor minute="90"/>
+        </spieleinsatz>
+      </spieler>
+      <spieler name="Nani">
+        <spieleinsatz sid="up">
+          <laufleistung einheit="km">10.386</laufleistung>
+          <tor minute="5"/>
+        </spieleinsatz>
+      </spieler>
+    </land>
+    <land name="USA">
+      <spieler name="Dempsey" vorname="Clint">
+        <spieleinsatz sid="up">
+          <laufleistung einheit="m">9546</laufleistung>
+          <tor minute="81"/>
+        </spieleinsatz>
+      </spieler>
+      <spieler name="Jones" vorname="Jermaine">
+        <spieleinsatz sid="up">
+          <laufleistung einheit="m">9823</laufleistung>
+          <tor minute="64"/>
+        </spieleinsatz>
+      </spieler>
+    </land>
+  </mannschaften>
+  <spiele>
+    <spiel id="dp" mannschaft1="Deutschland" mannschaft2="Portugal" datum="2014-06-16"/>
+    <spiel id="ud" mannschaft1="USA" mannschaft2="Deutschland" datum="2014-06-26"/>
+    <spiel id="up" mannschaft1="USA" mannschaft2="Portugal" datum="2014-06-22"/>
+    <spiel id="bm" mannschaft1="Brasilien" mannschaft2="Mexiko" datum="2014-06-17"/>
+    <spiel id="fd" mannschaft1="Frankreich" mannschaft2="Deutschland" datum="2014-07-04"/>
+  </spiele>
+</fbwm>

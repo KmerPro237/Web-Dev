@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE FiniteAutomaton [
+  <!ELEMENT FiniteAutomaton (States, Transitions)>
+  <!ELEMENT States (State)+>
+  <!ELEMENT State (#PCDATA)>
+  <!ATTLIST State
+    id ID #REQUIRED
+    final (true|false) "false"
+    start (true|false) "false"
+  >
+  <!ELEMENT Transitions (Transition)*>
+  <!ELEMENT Transition EMPTY>
+  <!ATTLIST Transition
+    from IDREF #REQUIRED
+    symbol (a|b) #REQUIRED
+    to IDREF #REQUIRED
+  >
+]>
+<FiniteAutomaton>
+  <States>
+    <State id="q0" start="true" final="true">State 0</State>
+    <State id="q1">State 1</State>
+    <State id="q2" final="true">State 2</State>
+  </States>
+  <Transitions>
+    <Transition from="q0" symbol="a" to="q0" />
+    <Transition from="q0" symbol="b" to="q1" />
+    <Transition from="q1" symbol="a" to="q1" />
+    <Transition from="q1" symbol="b" to="q2" />
+    <Transition from="q2" symbol="a" to="q2" />
+    <Transition from="q2" symbol="b" to="q0" />
+  </Transitions>
+</FiniteAutomaton>

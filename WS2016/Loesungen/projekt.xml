@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<projekt name="Sommerfest">
+  <besprechung start="2016-06-27T11:00:00" dauer="PT1H30M">
+    <teilnehmer>AB CD EF</teilnehmer>
+    <top id="t1" thema="Bier bestellen">
+      <entscheidung>Es wird nur Karlsberg und Bitburger bestellt</entscheidung>
+      <aufgabe id="a1" zugeteilt="AB">
+        Klären, wieviel Bier benötigt wird
+      </aufgabe>
+    </top>
+    <top id="t2" thema="Essen planen">
+      <entscheidung>Es wird geschwenkt</entscheidung>
+      <entscheidung>Es gibt Salate</entscheidung>
+      <aufgabe id="a2" zugeteilt="EF">
+        Klären, welches Grillgut angeboten wird
+      </aufgabe>
+    </top>
+  </besprechung>
+  <besprechung start="2016-06-29T08:30:00" dauer="PT55M">
+    <teilnehmer>EF CD</teilnehmer>
+    <top id="t3" refTop="t1">
+      <entscheidung refAufgabe="a1">
+        20 Kisten Urpils und 25 Kisten Stubbi bestellen
+      </entscheidung>
+    </top>
+    <top id="t5" refTop="t2">
+      <entscheidung refAufgabe="a2">
+        Angeboten werden Schwenker und Bratwurst
+      </entscheidung>
+      <aufgabe id="a3" zugeteilt="AB">
+        Mengen und Lieferant bestimmen
+      </aufgabe>
+      <aufgabe id="a5" zugeteilt="EF">
+        Soll Gemüse gegrillt werden?
+      </aufgabe>
+    </top>
+    <top id="t4" thema="Sitzgelegenheiten">
+      <entscheidung>10 Bierzeltgarnituren liefern lassen</entscheidung>
+    </top>
+  </besprechung>
+  <besprechung start="2016-06-30T17:30:00" dauer="PT1H25M">
+    <teilnehmer>CD AB EF</teilnehmer>
+    <top id="t10" thema="Wetter">
+      <entscheidung>Wir brauchen keine Sonnenschirme.</entscheidung>
+    </top>
+    <top id="t11" refTop="t2">
+      <entscheidung refAufgabe="a3">
+        100 Schwenker und 200 Würste aus dem Biomarkt
+      </entscheidung>
+    </top>
+  </besprechung>
+</projekt>

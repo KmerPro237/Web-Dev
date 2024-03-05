@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="praxis">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="leistungen" />
+        <xs:element ref="patienten" />
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="required" />
+    </xs:complexType>
+    <!-- Aufgabe 4d) -->
+    <xs:key name="keyLkz">
+      <xs:selector xpath="leistungen/leistung"/>
+      <xs:field xpath="@lkz"/>
+    </xs:key>
+
+    <xs:keyref name="keyrefLkz" refer="keyLkz">
+      <xs:selector xpath="patienten/patient/behandlung"/>
+      <xs:field xpath="@art"/>
+    </xs:keyref>
+    
+  </xs:element>
+  
+  <!-- Aufgabe 4 -->
+  <!-- a) -->
+  <xs:simpleType name="tKvnr">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\p{Lu}\d{9}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- b) -->
+  <xs:simpleType name="tJaNein">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ja"/>
+      <xs:enumeration value="nein"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- c) -->
+  <xs:element name="patient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="nachname" />
+        <xs:element ref="vorname" />
+        <xs:element ref="kasse" />
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="behandlung" />
+      </xs:sequence>
+      <xs:attribute name="kvnr" type="tKvnr" use="required" />
+      <xs:attribute name="geboren" type="xs:date" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <!-- Ende Aufgabe 4 -->
+  
+  <xs:simpleType name="tLkz">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-z]\d{2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="behandlung">
+    <xs:complexType>
+      <xs:attribute name="art" type="tLkz" use="required" />
+      <xs:attribute name="datum" type="xs:date" use="required" />
+      <xs:attribute default="nein" name="abgesagt" type="tJaNein"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="leistungen">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="leistung" />
+      </xs:sequence>
+    </xs:complexType>
+
+  </xs:element>
+
+  <xs:element name="leistung">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="preis" />
+      </xs:sequence>
+      <xs:attribute name="lkz" type="tLkz" use="required" />
+      <xs:attribute name="name" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="preis">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:decimal">
+          <xs:attribute name="kk" type="xs:string"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="patienten">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="patient" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="nachname" type="xs:string" />
+  <xs:element name="vorname" type="xs:string" />
+  <xs:element name="kasse" type="xs:string" />
+    
+</xs:schema>

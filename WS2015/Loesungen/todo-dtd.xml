@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE todo [
+  <!ELEMENT todo (kategorie+)>
+  <!ELEMENT kategorie (aufgabe*)>
+  <!ATTLIST kategorie
+    id ID #REQUIRED
+  >
+  <!ELEMENT aufgabe (notiz?,wiederholung?,zusatzkategorie*)>
+  <!ATTLIST aufgabe
+    id ID #REQUIRED
+    name CDATA #REQUIRED
+    dauer CDATA #IMPLIED
+    fällig CDATA #IMPLIED
+    erledigt (ja|nein) "nein"
+    vorher IDREFS #IMPLIED
+  >
+  <!ELEMENT wiederholung EMPTY>
+  <!ATTLIST wiederholung
+    periode CDATA #REQUIRED
+    ende CDATA #IMPLIED
+  >
+  <!ELEMENT notiz (#PCDATA)>
+  <!ELEMENT zusatzkategorie (#PCDATA)>
+]>
+<todo>
+  <kategorie id="Technik">
+    <aufgabe id="a4" name="Inspektion" erledigt="ja" fällig="2016-02-01">
+      <notiz>Auto zur großen Inspektion bringen</notiz>
+    </aufgabe>
+    <aufgabe id="a10" name="TÜV" vorher="a4" dauer="2">
+      <notiz>Auto zum TÜV bringen</notiz>
+      <wiederholung periode="P2Y"/>
+    </aufgabe>
+  </kategorie>
+  <kategorie id="Garten">
+    <aufgabe id="a7" name="Rasen düngen" fällig="2016-04-15">
+      <notiz>keinen Blaudünger verwenden</notiz>
+      <wiederholung periode="P1M" ende="2015-10-01"/>
+    </aufgabe>
+    <aufgabe id="a12" name="Schlauch reparieren" dauer="1">
+      <notiz>Loch finden und flicken</notiz>
+      <zusatzkategorie>Technik</zusatzkategorie>
+    </aufgabe>
+    <aufgabe id="a13" name="Unkraut jäten" dauer="2"></aufgabe>
+    <aufgabe id="a3" name="Bewässern" dauer="3" vorher="a13 a12"/>
+  </kategorie>
+  <kategorie id="Freizeit"/>
+  <kategorie id="Finanzen">
+    <aufgabe id="a1" name="Rechnung bezahlen" fällig="2016-03-08">
+      <notiz>für elektrische Heckenschere</notiz>
+      <zusatzkategorie>Garten</zusatzkategorie>
+      <zusatzkategorie>Technik</zusatzkategorie>
+    </aufgabe>
+  </kategorie>
+</todo>
